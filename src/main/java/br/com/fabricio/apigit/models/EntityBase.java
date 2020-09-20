@@ -15,6 +15,9 @@ public class EntityBase implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "enabled")
+    private Boolean enabled;
+
     @Transient
     private boolean persistido;
 
@@ -49,5 +52,13 @@ public class EntityBase implements Serializable {
 
     public void setPersistido(boolean persistido) {
         this.persistido = persistido;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
