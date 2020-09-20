@@ -1,7 +1,9 @@
 package br.com.fabricio.apigit.DAO;
 
 import br.com.fabricio.apigit.models.Usuarios;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface UsuariosDAO extends CrudRepository<Usuarios, Integer> {
+public interface UsuariosDAO extends PagingAndSortingRepository<Usuarios, Integer> {
+
+    Usuarios findByLogin(String login);
 }

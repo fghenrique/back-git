@@ -27,4 +27,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     public Usuarios findById(Integer id) {
         return usrDAO.findById(id).orElse(null);
     }
+
+    @Override
+    public Usuarios findByLogin(String login) { return usrDAO.findByLogin(login); }
 }

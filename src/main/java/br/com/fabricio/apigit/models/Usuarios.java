@@ -1,19 +1,31 @@
 package br.com.fabricio.apigit.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "usaurios")
+@Table(name = "usuarios")
 public class Usuarios extends EntityBase {
 
-    @Column(name = "nome")
+    @Column(name = "nome", length = 100)
     private String nome;
-    @Column(name = "login")
+    @Column(name = "login", length = 100)
     private String login;
     @Column(name = "password")
     private String password;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario_id", "role_id"})})
+    private List<Roles> roles;
+
+    public List<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
+    }
 
     public String getNome() {
         return nome;

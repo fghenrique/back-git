@@ -1,0 +1,1 @@
+INSERT INTO `usuarios` (nome, login, password) VALUES ('fulano', 'login', '12345');

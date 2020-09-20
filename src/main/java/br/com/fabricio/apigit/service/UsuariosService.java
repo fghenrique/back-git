@@ -6,4 +6,5 @@ import java.util.List;
 public interface UsuariosService {
     List<Usuarios> findAll();
     Usuarios findById(Integer id);
+    Usuarios findByLogin(String login);
 }
