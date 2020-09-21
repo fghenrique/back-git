@@ -27,7 +27,7 @@ public class UsuariosController {
     }
 
     @GetMapping("user/login/{login}")
-    public Usuarios user(@PathVariable("login") String login) {
+    public Usuarios login(@PathVariable("login") String login) {
         return usrService.findByLogin(login);
     }
 }

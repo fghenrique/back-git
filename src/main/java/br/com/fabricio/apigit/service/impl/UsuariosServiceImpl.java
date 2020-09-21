@@ -1,6 +1,5 @@
 package br.com.fabricio.apigit.service.impl;
 
-
 import br.com.fabricio.apigit.DAO.UsuariosDAO;
 import br.com.fabricio.apigit.models.Usuarios;
 import br.com.fabricio.apigit.service.UsuariosService;
