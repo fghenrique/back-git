@@ -8,4 +8,5 @@ public interface UsuariosService {
     Usuarios findById(Integer id);
     Usuarios findByUsername(String username);
     Usuarios save(Usuarios usuarios);
+    void deleteById(Integer id);
 }

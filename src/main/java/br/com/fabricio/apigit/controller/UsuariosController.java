@@ -33,4 +33,9 @@ public class UsuariosController {
     public Usuarios username(@RequestBody Usuarios usuarios) {
         return usrService.save(usuarios);
     }
+
+    @GetMapping("user/delete/{id}")
+    public void deleteById(@PathVariable("id") Integer id) {
+        usrService.deleteById(id);
+    }
 }

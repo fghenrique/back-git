@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UsuariosServiceImpl implements UsuariosService {
@@ -36,9 +37,21 @@ public class UsuariosServiceImpl implements UsuariosService {
 
     @Override
     public Usuarios save(Usuarios usuarios) {
-        usuarios.getRoles().forEach(role ->{
-            role.setId(rolesDAO.findByNome(role.getNome()).getId());
-        });
-        return usrDAO.save(usuarios);
+        Usuarios user = usrDAO.findByUsername(usuarios.getUsername());
+        if(Objects.isNull(user)){
+            usuarios.getRoles().forEach(role ->{
+                role.setId(rolesDAO.findByNome(role.getNome()).getId());
+            });
+            return usrDAO.save(usuarios);
+        }else{
+            user.setPassword(usuarios.getPassword());
+            user.setUsername(usuarios.getUsername());
+            return usrDAO.save(user);
+        }
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        usrDAO.deleteById(id);
     }
 }
