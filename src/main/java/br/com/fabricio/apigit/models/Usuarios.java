@@ -7,10 +7,8 @@ import java.util.List;
 @Table(name = "usuarios")
 public class Usuarios extends EntityBase {
 
-    @Column(name = "nome", length = 100)
-    private String nome;
-    @Column(name = "login", length = 100, unique = true)
-    private String login;
+    @Column(name = "username", length = 100, unique = true)
+    private String username;
     @Column(name = "password")
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -27,27 +25,19 @@ public class Usuarios extends EntityBase {
         this.roles = roles;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

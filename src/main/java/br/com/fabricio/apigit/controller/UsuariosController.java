@@ -26,8 +26,8 @@ public class UsuariosController {
         return usrService.findById(id);
     }
 
-    @GetMapping("user/login/{login}")
-    public Usuarios login(@PathVariable("login") String login) {
-        return usrService.findByLogin(login);
+    @GetMapping("user/username/{username}")
+    public Usuarios username(@PathVariable("username") String username) {
+        return usrService.findByUsername(username);
     }
 }
