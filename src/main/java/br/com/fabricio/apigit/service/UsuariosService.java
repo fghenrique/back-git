@@ -7,4 +7,5 @@ public interface UsuariosService {
     List<Usuarios> findAll();
     Usuarios findById(Integer id);
     Usuarios findByUsername(String username);
+    Usuarios save(Usuarios usuarios);
 }

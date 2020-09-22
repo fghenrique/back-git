@@ -1,5 +1,6 @@
 package br.com.fabricio.apigit.service.impl;
 
+import br.com.fabricio.apigit.DAO.RolesDAO;
 import br.com.fabricio.apigit.DAO.UsuariosDAO;
 import br.com.fabricio.apigit.models.Usuarios;
 import br.com.fabricio.apigit.service.UsuariosService;
@@ -15,6 +16,9 @@ public class UsuariosServiceImpl implements UsuariosService {
     @Autowired
     private UsuariosDAO usrDAO;
 
+    @Autowired
+    private RolesDAO rolesDAO;
+
     @Override
     @Transactional(readOnly = true)
     public List<Usuarios> findAll() {
@@ -29,4 +33,12 @@ public class UsuariosServiceImpl implements UsuariosService {
 
     @Override
     public Usuarios findByUsername(String username) { return usrDAO.findByUsername(username); }
+
+    @Override
+    public Usuarios save(Usuarios usuarios) {
+        usuarios.getRoles().forEach(role ->{
+            role.setId(rolesDAO.findByNome(role.getNome()).getId());
+        });
+        return usrDAO.save(usuarios);
+    }
 }
