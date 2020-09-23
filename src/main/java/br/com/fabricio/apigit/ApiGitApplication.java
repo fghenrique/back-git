@@ -9,5 +9,4 @@ public class ApiGitApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiGitApplication.class, args);
     }
-
 }

@@ -13,7 +13,15 @@ public class GitHubController {
     private CallGitHub callGitHub;
 
     @GetMapping("/list")
-    public ProgramadoresDTO[] lista(){
-        return callGitHub.Programadores("https://api.github.com/users?since=100");
+    public ProgramadoresDTO lista() {
+        var pg1 = callGitHub.Programador("https://api.github.com/search/users?q=repos:>50+followers:>100&page=1");
+
+        ProgramadoresDTO progra = new ProgramadoresDTO();
+        progra.setItems(pg1.getItems());
+        for (int i = 1; i< 17; i++){
+            pg1 = callGitHub.Programador("https://api.github.com/search/users?q=repos:>50+followers:>100&page="+(i+1));
+            progra.getItems().addAll(pg1.getItems());
+        }
+        return progra;
     }
 }
