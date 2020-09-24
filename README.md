@@ -14,6 +14,11 @@ nos próximos tópicos )
 - É possível incluir o `Api_Git.jar` diretamente em um container Web (`Tomcat`)
 
 ## Roteiro
-Foi desenvolvido uma api para consumir os melhores 500 programadores do github, no projeto também tem um CRUD de cadastro de usuário.
+Está aplicação é responsável por todo processamento.
 
-O front tem papel de consumir os métodos back-git e exibir em um layout simples
+Ela faz a consulta na API do Git através do método list, e também faz o CRUD do cadastro do usuário por ORM utilizando framework de persistência.
+
+Também consome a API do GitHub, tendo como critério para buscar os 500 programadores que tenham mais de 50 repos e mais de 100 followers
+
+Exemplos: 
+https://api.github.com/search/users?q=repos:>50+followers:>100&page=1
