@@ -12,3 +12,6 @@ nos próximos tópicos )
 ## Implementação
 
 - É possível incluir o `Api_Git.jar` diretamente em um container Web (`Tomcat`)
+
+## Roteiro
+Foi desenvolvido uma api para consumir os melhores 500 programadores do git
